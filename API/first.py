@@ -1,6 +1,6 @@
 from typing import Union
 from fastapi import FastAPI
-
+from typing import Optional
 
 app= FastAPI()
 
@@ -8,6 +8,6 @@ app= FastAPI()
 def read_root():
     return {"Hello": "Hello World"}
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+@app.get("/greet/")
+async def greet(name: Optional[str]="Amin",age:Optional[int]=30):
+    return {"message": f"Hello {name}","Age":age }
