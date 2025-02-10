@@ -1,8 +1,13 @@
 from typing import Union
-from fastapi import FastAPI
+from fastapi import FastAPI,Header
 from typing import Optional
-
+from pydantic import BaseModel
 app= FastAPI()
+
+
+class  BookCreateModel(BaseModel):
+    title: str
+    author: str
 
 @app.get("/")
 def read_root():
@@ -11,3 +16,14 @@ def read_root():
 @app.get("/greet/")
 async def greet(name: Optional[str]="Amin",age:Optional[int]=30):
     return {"message": f"Hello {name}","Age":age }
+
+@app.post('/createbook/')
+async def create_book(book: BookCreateModel):
+    return{
+        "title":book.title,
+        "author":book.author
+    }
+
+@app.get('/get-headers/')
+def get_headers(accept: str = Header(None), x_token: str = Header(None),connection: str = Header(None)):
+    return {"Accept": accept, "X-Token": x_token,"Connection":connection}
