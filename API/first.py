@@ -25,5 +25,5 @@ async def create_book(book: BookCreateModel):
     }
 
 @app.get('/get-headers/')
-def get_headers(accept: str = Header(None), x_token: str = Header(None),connection: str = Header(None)):
-    return {"Accept": accept, "X-Token": x_token,"Connection":connection}
+def get_headers(accept: str = Header(None), x_token: str = Header(None),connection: str = Header(None), host : str = Header(None)):
+    return {"Accept": accept, "X-Token": x_token,"Connection":connection , "Host":host}
