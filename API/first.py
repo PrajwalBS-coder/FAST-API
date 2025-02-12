@@ -1,7 +1,10 @@
 from typing import Union
-from fastapi import FastAPI,Header
+from fastapi import FastAPI,Header,status
 from typing import Optional
 from pydantic import BaseModel
+from fastapi.exceptions import HTTPException
+
+
 app= FastAPI()
 
 
