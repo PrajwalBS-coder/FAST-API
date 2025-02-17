@@ -75,4 +75,5 @@ async def book():
 
 @app.get("/books/{id}/")
 async def book(id):
-    return books[int(id)]
+    # return book[0][id] for book in books if book.get("id")==id   else "Eror"
+    return next((book[id] for book in books if book.get("id") == id), "Error")
