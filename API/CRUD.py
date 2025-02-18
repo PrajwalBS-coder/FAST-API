@@ -1,6 +1,6 @@
 from fastapi import FastAPI,status
 from fastapi.exceptions import HTTPException
-
+from pydantic import BaseModel
 
 app=FastAPI()
 
@@ -74,6 +74,22 @@ async def book():
     return books
 
 @app.get("/books/{id}/")
-async def book(id):
-    # return book[0][id] for book in books if book.get("id")==id   else "Eror"
-    return next((book[id] for book in books if book.get("id") == id), "Error")
+async def book(id:int):
+    return next((book for book in books if book.get("id") == id), "Error")
+
+    
+
+
+class bookmodel(BaseModel):
+  name :str
+  author : str
+
+@app.patch("/books/{id}/")
+async def book(id: int,data:bookmodel) ->dict:
+  for book in books:
+    if book["id"] == id:
+      book["title"]= data.name
+      book["author"] = data.author
+      return book
+  
+  raise HTTPException(detail="Not Possible",status_code=status.HTTP_400_BAD_REQUEST)
