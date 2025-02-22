@@ -1,11 +1,9 @@
 from fastapi import APIRouter, HTTPException,status
 from fastapi.responses import JSONResponse
-from books.schemas import bookmodel
-from books.books_data import books
+from src.books.schemas import bookmodel
+from src.books.books_data import books
 
 app_router = APIRouter()
-
-
 
 @app_router.get("/")
 async def book():
