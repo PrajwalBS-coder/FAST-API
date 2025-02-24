@@ -16,8 +16,8 @@ class Book(SQLModel, table=True):
     publisher: str
     date :str
     pages: int
-    created_at: datetime = Field(Column(pg.TIMESTAMP, default=datetime.now))
-    updated_at: datetime = Field(Column(pg.TIMESTAMP, default=datetime.now, onupdate=datetime.now))
+    created_at: datetime = Field(sa_column = Column(pg.TIMESTAMP, default=datetime.now))
+    updated_at: datetime = Field(sa_column = Column(pg.TIMESTAMP, default=datetime.now, onupdate=datetime.now))
 
 
     def __repr__(self):
