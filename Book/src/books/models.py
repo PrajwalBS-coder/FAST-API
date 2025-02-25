@@ -9,7 +9,7 @@ class Book(SQLModel, table=True):
             pg.UUID,
             nullable=False,
             primary_key=True,
-            default=UUID4,#2:22:40
+            default=UUID4,
         ) )
     title: str
     author: str
