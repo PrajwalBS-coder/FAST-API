@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException,status
 from fastapi.responses import JSONResponse
-from src.books.schemas import bookmodel
+from src.books.schemas import Bookmodel
 from src.books.books_data import books
 
 app_router = APIRouter()
@@ -14,7 +14,7 @@ async def book(id:int):
     return next((book for book in books if book.get("id") == id), "Error")
 
 @app_router.patch("/{id}/")
-async def book(id: int,data:bookmodel) ->dict:
+async def book(id: int,data:Bookmodel) ->dict:
   for book in books:
     if book["id"] == id:
       book["title"]= data.name

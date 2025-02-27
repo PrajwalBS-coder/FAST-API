@@ -1,5 +1,5 @@
 from sqlmodel import SQLModel, Field,Column
-from datetime import datetime
+from datetime import datetime,date
 from pydantic import UUID4
 import sqlalchemy.dialects.postgresql as pg
 class Book(SQLModel, table=True):
@@ -14,7 +14,7 @@ class Book(SQLModel, table=True):
     title: str
     author: str
     publisher: str
-    date :str
+    date : date
     pages: int
     created_at: datetime = Field(sa_column = Column(pg.TIMESTAMP, default=datetime.now))
     updated_at: datetime = Field(sa_column = Column(pg.TIMESTAMP, default=datetime.now, onupdate=datetime.now))
