@@ -14,4 +14,6 @@ class BookService:
         return book
 
     async def update_book(self,book_uid:str,updated_data :BookUpdateModel ,session: AsyncSession):
-        pass
+        statement = select(Book)
+        books = await session.exec(statement)
+        return books
