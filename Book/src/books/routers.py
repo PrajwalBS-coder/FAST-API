@@ -1,12 +1,18 @@
-from fastapi import APIRouter, HTTPException,status
+from fastapi import APIRouter, HTTPException,status,Depends 
 from fastapi.responses import JSONResponse
 from src.books.schemas import Bookmodel
 from src.books.books_data import books
+from sqlmodel.ext.asyncio.session import AsyncSession
+from src.db.main import get_session
+from src.books.service import BookService
+
 
 app_router = APIRouter()
+book_service = BookService()
 
 @app_router.get("/")
-async def book():
+async def book(session:AsyncSession= Depends(get_session)):
+    books = book_service.
     return books
 
 @app_router.get("/{id}/")
