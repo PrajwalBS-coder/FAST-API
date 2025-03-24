@@ -12,7 +12,7 @@ book_service = BookService()
 
 @app_router.get("/")
 async def book(session:AsyncSession= Depends(get_session)):
-    books = book_service.
+    books = book_service.model_dump()#3:02
     return books
 
 @app_router.get("/{id}/")
