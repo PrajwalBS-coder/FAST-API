@@ -15,6 +15,12 @@ async def book(session:AsyncSession= Depends(get_session)):
     books = book_service.get_all_books(session)#3:02
     return books
 
+
+@app_router.post("/",status_code=status.HTTP_201_CREATED)
+async def create_book(book_data: Book,session:AsyncSession= Depends(get_session)) -> dict:
+  new_book = book_service.create_book(book_data,session)
+
+
 @app_router.get("/{id}/")
 async def book(id:int):
     return next((book for book in books if book.get("id") == id), "Error")
