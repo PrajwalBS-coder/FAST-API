@@ -23,3 +23,32 @@ staticfiles/
 # VS Code
 .vscode/
 
+.*.cpython*
+
+# Python-related
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.cpython*
+
+# Virtual environment
+venv/
+env/
+*.venv
+
+# Environment variables
+.env
+
+# Django-related
+db.sqlite3
+/media/
+staticfiles/
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+.c
